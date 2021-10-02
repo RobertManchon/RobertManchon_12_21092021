@@ -1,7 +1,7 @@
-import './App.css';
+import './app.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import DashBoard from '../DashBoard/DashBoard';
+import DashBoard from '../dashboard/dashboard';
 
 function App() {
   return (
