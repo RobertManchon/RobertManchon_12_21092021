@@ -3,3 +3,12 @@
     position: absolute;
     top: 9rem;
 }
+.chartsHorizontal {
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    height: 1024px;
+    width: 1440px;
+}

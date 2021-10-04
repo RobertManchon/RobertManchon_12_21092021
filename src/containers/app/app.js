@@ -1,19 +1,19 @@
-import './app.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './app.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import DashBoard from '../dashboard/dashboard';
+import DashBoard from '../dashboard/dashboard'
 
-function App() {
+function App () {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <DashBoard/>
+        <Route exact path='/'>
+          <DashBoard />
         </Route>
-        <Route path="*"></Route>
+        <Route path='*' />
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
