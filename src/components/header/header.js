@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import './header.css'
 import { Link } from 'react-router-dom'
+import './header.css'
+import MainNavBar from '../mainnavbar/mainnavbar'
 import logo from '../../assets/logo/logo.png'
 
-import MainNavBar from '../mainnavbar/mainnavbar'
+
 
 class Header extends Component {
   render () {

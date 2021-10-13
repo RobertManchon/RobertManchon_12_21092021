@@ -2,13 +2,26 @@
     left: 15%;
     position: absolute;
     top: 9rem;
+    width: 835px;
 }
+
 .chartsHorizontal {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.chartsVertical {
+    display: flex;
+    flex-direction: column;
+    height: 660px;
+    justify-content: space-between;
+    left: 55rem;
+    position: absolute;
+    top: 15%;
 }
 
 main {
     height: 1024px;
-    width: 1440px;
+    width: 100%;
 }
