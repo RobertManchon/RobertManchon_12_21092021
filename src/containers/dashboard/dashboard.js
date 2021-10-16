@@ -5,17 +5,21 @@ import Header from '../../components/header/header'
 import SideBar from '../../components/sidebar/sidebar'
 
 class DashBoard extends Component {
-  render() {
-    return (
-        <Fragment>
-          <Header />
-          <main>
-            <SideBar />
-            <Charts />
-          </main>
-        </Fragment>
-    )
-  }
+    state = {
+        userId : 12,
+    }
+
+    render() {
+        return (
+            <Fragment>
+                <Header />
+                <main>
+                    <SideBar />
+                    <Charts userId={this.state.userId}/>
+                </main>
+            </Fragment>
+        )
+    }
 }
 
 export default DashBoard
