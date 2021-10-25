@@ -1,25 +1,29 @@
-import React, {Component, Fragment} from 'react'
-import Charts from '../../components/charts/charts'
-import './dashboard.css'
-import Header from '../../components/header/header'
-import SideBar from '../../components/sidebar/sidebar'
+import Charts from '../Charts/Charts';
+import 'containers/DashBoard/DashBoard.css';
+import Header from 'components/Header/Header';
+import PropTypes from 'prop-types';
+import React, {Component, Fragment} from 'react';
+import SideBar from 'components/SideBar/SideBar';
 
 class DashBoard extends Component {
     state = {
-        userId : 12,
+        id : this.props.id,
     }
-
-    render() {
+    render() {   
         return (
             <Fragment>
                 <Header />
                 <main>
                     <SideBar />
-                    <Charts userId={this.state.userId}/>
+                    <Charts id={this.state.id} />
                 </main>
             </Fragment>
         )
     }
 }
 
-export default DashBoard
+DashBoard.propTypes = {
+    id : PropTypes.string.isRequired,
+}
+
+export default DashBoard;

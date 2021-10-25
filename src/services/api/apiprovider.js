@@ -1,61 +1,77 @@
-import ApiFormatter from './apiformatter'
+import ApiFormatter from './ApiFormatter'
 import axios from 'axios'
 
 class ApiProvider {
     constructor() {
-        this.userId = 12;
-        this.baseUrl = 'http://localhost:3000';
+        this.baseUrl = 'http://localhost:3000'
+        //this.baseUrl = 'file:///D:/Mes Projets/RobertManchon_12_21092021/src/services/mocks'
     }
 
-    // MAIN DATA
-    async getMainData() {
-        const data = {};
-        let url = `${this.baseUrl}/user/${this.userId}`;
+    /**
+     * Fetch USER_MAIN_DATA from API
+     * @param {string} id - user id
+     * @return {Array.Object}
+     */
+    async getMainData(id) {
+        let data = {};
+        let url = `${this.baseUrl}/user/${id}`;
 
         await axios.get(url)
-        .then(function (response) {
-            data.content = ApiFormatter.getMainDataFormat(response);
-        })
-        return data;
-    }
-
-    // DAILYACTIVITY
-    async getUserDailyActivityData() {
-        const data = {};
-        let url = `${this.baseUrl}/user/${this.userId}/activity`;
-
-        await axios.get(url)
-        .then(function (response) {
-            data.content = ApiFormatter.getDailyActivityDataFormat(response);
-        })
-        return data;
-    }
-
-    // AVERAGESESSIONS
-    async getUserAverageSessionData() {
-        const data = {};
-        let url = `${this.baseUrl}/user/${this.userId}/average-sessions`;
-
-        await axios
-            .get(url)
             .then(function (response) {
-                data.content = ApiFormatter.getUserAverageDataFormat(response);
+                data = ApiFormatter.getMainDataFormat(response);
             })
         return data;
     }
 
-    // PERFORMANCE
-    async getUserPerformanceData() {
-        const data = {};
-        let url = `${this.baseUrl}/user/${this.userId}/performance`;
+    /**
+     * Fetch USER_ACTIVITY from API
+     * @param {string} id - user id
+     * @return {Array.Object}
+     */
+    async getUserDailyActivityData(id) {
+        let data = {};
+        let url = `${this.baseUrl}/user/${id}/activity`
+
+        await axios.get(url)
+            .then(function (response) {
+                data = ApiFormatter.getDailyActivityDataFormat(response);
+            })
+        return data
+    }
+
+    /**
+     * Fetch USER_AVERAGE_SESSIONS from API
+     * @param {string} id - user id
+     * @return {Array.Object}
+     */
+    async getUserAverageSessionData(id) {
+        let data = {};
+        let url = `${this.baseUrl}/user/${id}/average-sessions`
 
         await axios
             .get(url)
             .then(function (response) {
-                data.content = ApiFormatter.getPerformanceAverageDataFormat(response);
+                data = ApiFormatter.getUserAverageDataFormat(response);
+            })
+        return data
+    }
+
+    /**
+     * Fetch USER_PERFORMANCE from API
+     * @param {string} id - user id
+     * @return {Array.Object}
+     */
+    async getUserPerformanceData(id) {
+        let data = {};
+        let url = `${this.baseUrl}/user/${id}/performance`;
+
+        await axios
+            .get(url)
+            .then(function (response) {
+                data = ApiFormatter.getPerformanceAverageDataFormat(response);
             })
         return data;
     }
 }
 
-export default ApiProvider;
+export default ApiProvider

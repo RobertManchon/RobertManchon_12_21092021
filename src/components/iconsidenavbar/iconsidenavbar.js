@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import './iconsidenavbar.css'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 class IconSideNavBar extends Component {
     render() {
@@ -14,4 +14,8 @@ class IconSideNavBar extends Component {
     }
 }
 
-export default IconSideNavBar
+IconSideNavBar.propTypes = {
+    logo : PropTypes.string.isRequired,
+}
+
+export default IconSideNavBar;

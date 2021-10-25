@@ -1,30 +1,30 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import './customtooltipdailyactivity.css'
+import './CustomTooltipDailyActivity.css';
+import PropTypes from "prop-types";
+import React, {Component} from 'react';
 
 class CustomTooltipDailyActivity extends Component {
-  render () {
-    const { payload, active } = this.props
+    render() {
+        const { payload, active } = this.props;
 
-    if (active && payload) {
-      return (
-        <div className='tooltipContainer'>
-          <p className='tooltipLine black'>
-            {`${payload[0].value} kg`}
-          </p>
-          <p className='tooltipLine red'>
-            {`${payload[1].value} kCal`}
-          </p>
-        </div>
-      )
+        if (active && payload) {
+            return (
+                <div className="tooltipContainer">
+                    <p className="tooltipLine black">
+                        {`${payload[0].value} kg`}
+                    </p>
+                    <p className="tooltipLine red">
+                        {`${payload[1].value} kCal`}
+                    </p>
+                </div>
+        );
     }
-    return null
-  }
+        return null;
+    }
 }
 
 CustomTooltipDailyActivity.propTypes = {
-  payload: PropTypes.array,
-  active: PropTypes.bool
-}
+    payload: PropTypes.array,
+    active: PropTypes.bool,
+};
 
-export default CustomTooltipDailyActivity
+export default CustomTooltipDailyActivity;
