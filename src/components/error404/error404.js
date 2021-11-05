@@ -4,7 +4,16 @@ import {Link} from 'react-router-dom';
 import logo from 'assets/logo/logo.png';
 import React, { Component, Fragment } from 'react';
 
+/**
+ * Class ERROR 404
+ *
+ */
+
 class Error404 extends Component {
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     getErrorHeader = () => {
         return (
             <header>
@@ -13,6 +22,10 @@ class Error404 extends Component {
         )
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     getErrorModal = () => {
         return (
             <section className="error404Background">
@@ -29,6 +42,10 @@ class Error404 extends Component {
         )
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render() {
         return (
             <Fragment> 

@@ -15,7 +15,7 @@
 }
 
 .error404Content {
-    animation-duration: 2s;
+    animation-duration: var(--modal-duration);
     animation-name: modalopen;
     background: #232323;
     border-radius: .625rem;

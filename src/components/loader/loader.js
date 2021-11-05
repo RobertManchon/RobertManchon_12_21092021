@@ -1,14 +1,17 @@
-import 'components/Loader/Loader.css';
-import React, { Component, Fragment } from 'react';
+import 'components/Loader/Loader.css'
+import React, { Component, Fragment } from 'react'
 
-class Loader extends Component{
-    render() {
-        return (
-            <Fragment>
-                <div className="loader"></div>
-            </Fragment>
-        )
-    }
+/**
+ * Class Loader
+ */
+class Loader extends Component {
+  render () {
+    return (
+      <>
+        <div className='loader' />
+      </>
+    )
+  }
 }
 
-export default Loader;
+export default Loader

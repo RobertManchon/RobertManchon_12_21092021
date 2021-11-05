@@ -3,13 +3,18 @@ import 'components/MacroTracker/MacroTracker.css';
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
+/**
+ * Class MacroTracker
+ */
 class MacroTracker extends Component {
     state = {
         loading : true,
     }
 
+    /**
+     * Fetching data from API and fill states
+     */
     componentDidMount() {
-        // Fetching data from API and fill states
         fetch(this.props.data)
         .then(
             this.setState({
@@ -18,6 +23,10 @@ class MacroTracker extends Component {
         );
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render() {
         return this.state.loading ?
         (
@@ -39,6 +48,10 @@ class MacroTracker extends Component {
     }
 }
 
+/**
+ *
+ * @type {{data: Requireable<number>, unitOfMeasure: Validator<NonNullable<string>>, icon: Validator<NonNullable<string>>, name: Validator<NonNullable<string>>}}
+ */
 MacroTracker.propTypes = {
     data : PropTypes.number,
     icon : PropTypes.string.isRequired,

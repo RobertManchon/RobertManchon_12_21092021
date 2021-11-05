@@ -5,7 +5,14 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import 'containers/SessionsAverage/SessionsAverage.css';
 
+/**
+ * Class SessionsAverage
+ */
 class SessionsAverage extends Component {
+    /**
+     *
+     * @param props
+     */
     constructor(props) {
         super(props)
 
@@ -28,6 +35,10 @@ class SessionsAverage extends Component {
         });
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render() {
         return this.state.loading ? 
         (
@@ -43,7 +54,10 @@ class SessionsAverage extends Component {
         )
     }
 
-    // Build Header Line Chart 
+    /**
+     * Build Header Line Chart
+     * @returns {JSX.Element}
+     */
     getHeaderLineChart = () => {
         return (
             <header>
@@ -57,6 +71,10 @@ class SessionsAverage extends Component {
     }
 }
 
+/**
+ *
+ * @type {{id: Validator<NonNullable<string>>}}
+ */
 SessionsAverage.propTypes = {
     id : PropTypes.string.isRequired,
 }

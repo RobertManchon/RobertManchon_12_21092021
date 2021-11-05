@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: containers/Charts/Charts.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: containers/Charts/Charts.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import ApiProvider from 'services/Api/ApiProvider';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+// ASSETS 
+import calories from 'assets/macroTracker/calories.png';
+import protein from 'assets/macroTracker/protein.png';
+import carbohydrates from 'assets/macroTracker/carbohydrates.png';
+import lipids from 'assets/macroTracker/lipids.png';
+// CHARTS
+import Welcome from 'components/Welcome/Welcome';
+import DailyActivity from 'containers/DailyActivity/DailyActivity';
+import SessionsAverage from 'containers/SessionsAverage/SessionsAverage';
+import PerformanceAverage from 'containers/PerformanceAverage/PerformanceAverage';
+import GoalScore from 'containers/GoalScore/GoalScore';
+import MacroTracker from 'components/MacroTracker/MacroTracker';
+import ErrorModal from 'components/ErrorModal/ErrorModal';
+
+class Charts extends Component {
+    /**
+     *
+     * @param props
+     */
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            id : this.props.id,
+            welcomeData : null,
+            goalScoreData : [],
+            goalScorePercentage : 0,
+            macroTrackerData : [],
+        }
+        this.apiProvider = new ApiProvider();
+    }
+
+    componentDidMount = () => {
+        this.apiProvider
+        .getMainData(this.state.id)
+        .then((response) => {
+            this.setState({
+                welcomeData: response.firstName,
+                goalScoreData: [
+                    { name: "completed", value: response.userScore, fillColor: "#e60000" },
+                    { name: "not-completed", value: 1 - response.userScore, fillColor: "transparent" },
+                ],
+                goalScorePercentage : response.userScore * 100,
+                macroTrackerData: response.macroTracker,
+                errorModal: false,
+            });
+        })
+        .catch((error) => {
+            this.setState({
+                errorModal : true,
+                message : error.message,
+            })
+        })
+    }
+
+    /**
+     *
+     * @returns {JSX.Element}
+     */
+    render () {
+        return this.state.errorModal ? 
+        (
+            &lt;ErrorModal message={this.state.message} />
+        )
+        : (
+            &lt;section className="charts">
+                &lt;Welcome welcomeData={this.state.welcomeData} />
+                &lt;DailyActivity id={this.state.id} />
+                {this.getHorizontalSectionCharts()}
+                {this.getMacroTrackerSideSection()}
+            &lt;/section>
+        )
+    }
+
+
+    /**
+     * Build the main Section Charts with UserAverageChart, PerformanceAverageChart and GoalScoreChart
+     * @returns {JSX.Element}
+     */
+    getHorizontalSectionCharts = () => {
+        return (
+            &lt;section className="chartsHorizontal">
+                &lt;SessionsAverage id={this.state.id} />
+                &lt;PerformanceAverage id={this.state.id} />
+                &lt;GoalScore 
+                    goalScoreData={this.state.goalScoreData} 
+                    goalScorePercentage={this.state.goalScorePercentage} 
+                />
+            &lt;/section>
+        )
+    }
+
+
+    /**
+     * Build the side section that contains the MacroTrackers
+     * @returns {JSX.Element}
+     */
+    getMacroTrackerSideSection = () => {
+        return (
+            &lt;section className="chartsVertical">
+                {/* CALORIES */}
+                &lt;MacroTracker 
+                    data={this.state.macroTrackerData.calorieCount / 1000}
+                    icon={calories} 
+                    unitOfMeasure="kCal" 
+                    name="Calories"
+                />
+                {/* PROTEIN */}
+                &lt;MacroTracker 
+                    data={this.state.macroTrackerData.proteinCount}
+                    icon={protein} 
+                    unitOfMeasure="g" 
+                    name="Protéines"
+                /> 
+                {/* CARBOHYDRATES */}
+                &lt;MacroTracker 
+                    data={this.state.macroTrackerData.carbohydrateCount}
+                    icon={carbohydrates} 
+                    unitOfMeasure="g" 
+                    name="Glucides"
+                />
+                {/* LIPIDS */}
+                &lt;MacroTracker 
+                    data={this.state.macroTrackerData.lipidCount}
+                    icon={lipids} 
+                    unitOfMeasure="g" 
+                    name="Lipides"
+                />
+            &lt;/section>
+        )
+    }
+}
+
+/**
+ *
+ * @type {{id: Validator&lt;NonNullable&lt;string>>}}
+ */
+Charts.propTypes = {
+    id : PropTypes.string.isRequired,
+}
+
+export default Charts;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiFormatter.html">ApiFormatter</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="ChartBar.html">ChartBar</a></li><li><a href="ChartRadar.html">ChartRadar</a></li><li><a href="Charts.html">Charts</a></li><li><a href="DailyActivity.html">DailyActivity</a></li><li><a href="DashBoard.html">DashBoard</a></li><li><a href="Error404.html">Error404</a></li><li><a href="ErrorModal.html">ErrorModal</a></li><li><a href="GoalScore.html">GoalScore</a></li><li><a href="Header.html">Header</a></li><li><a href="IconSideNavBar.html">IconSideNavBar</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MacroTracker.html">MacroTracker</a></li><li><a href="MainNavBar.html">MainNavBar</a></li><li><a href="PerformanceAverage.html">PerformanceAverage</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SideBarNav.html">SideBarNav</a></li><li><a href="Welcome.html">Welcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 01 2021 18:04:52 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

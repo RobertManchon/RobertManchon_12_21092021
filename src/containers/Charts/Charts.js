@@ -1,21 +1,25 @@
-import ApiProvider from 'services/Api/ApiProvider';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import ApiProvider from 'services/Api/ApiProvider'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // ASSETS 
-import calories from 'assets/macroTracker/calories.png';
-import protein from 'assets/macroTracker/protein.png';
-import carbohydrates from 'assets/macroTracker/carbohydrates.png';
-import lipids from 'assets/macroTracker/lipids.png';
+import calories from 'assets/macroTracker/calories.png'
+import protein from 'assets/macroTracker/protein.png'
+import carbohydrates from 'assets/macroTracker/carbohydrates.png'
+import lipids from 'assets/macroTracker/lipids.png'
 // CHARTS
-import Welcome from 'components/Welcome/Welcome';
-import DailyActivity from 'containers/DailyActivity/DailyActivity';
-import SessionsAverage from 'containers/SessionsAverage/SessionsAverage';
-import PerformanceAverage from 'containers/PerformanceAverage/PerformanceAverage';
-import GoalScore from 'containers/Goalscore/GoalScore';
-import MacroTracker from 'components/MacroTracker/MacroTracker';
-import ErrorModal from 'components/ErrorModal/ErrorModal';
+import Welcome from 'components/Welcome/Welcome'
+import DailyActivity from 'containers/DailyActivity/DailyActivity'
+import SessionsAverage from 'containers/SessionsAverage/SessionsAverage'
+import PerformanceAverage from 'containers/PerformanceAverage/PerformanceAverage'
+import GoalScore from 'containers/GoalScore/GoalScore'
+import MacroTracker from 'components/MacroTracker/MacroTracker'
+import ErrorModal from 'components/ErrorModal/ErrorModal'
 
 class Charts extends Component {
+    /**
+     *
+     * @param props
+     */
     constructor(props) {
         super(props)
 
@@ -52,6 +56,10 @@ class Charts extends Component {
         })
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render () {
         return this.state.errorModal ? 
         (
@@ -67,7 +75,11 @@ class Charts extends Component {
         )
     }
 
-    // Build the main Section Charts with UserAverageChart, PerformanceAverageChart and GoalScoreChart
+
+    /**
+     * Build the main Section Charts with UserAverageChart, PerformanceAverageChart and GoalScoreChart
+     * @returns {JSX.Element}
+     */
     getHorizontalSectionCharts = () => {
         return (
             <section className="chartsHorizontal">
@@ -81,7 +93,11 @@ class Charts extends Component {
         )
     }
 
-    // Build the side section that contains the MacroTrackers
+
+    /**
+     * Build the side section that contains the MacroTrackers
+     * @returns {JSX.Element}
+     */
     getMacroTrackerSideSection = () => {
         return (
             <section className="chartsVertical">
@@ -118,6 +134,10 @@ class Charts extends Component {
     }
 }
 
+/**
+ *
+ * @type {{id: Validator<NonNullable<string>>}}
+ */
 Charts.propTypes = {
     id : PropTypes.string.isRequired,
 }

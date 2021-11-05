@@ -1,9 +1,16 @@
 import ChartPie from 'components/Charts/ChartPie/ChartPie';
-import 'containers/Goalscore/GoalScore.css';
+import 'containers/GoalScore/GoalScore.css';
 import PropTypes from 'prop-types';
 import React, { Component } from "react";
 
+/**
+ * Class GoalScore
+ */
 class GoalScore extends Component {
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render() {
         return (
             <article className="goalPieChart">
@@ -14,7 +21,11 @@ class GoalScore extends Component {
         )
     }
 
-    // Build Pie Chart Infos
+
+    /**
+     * Build Pie Chart Infos
+     * @returns {JSX.Element}
+     */
     getPieChartInfos = () => {
         return (
             <div className="goalPieChartInfos">
@@ -28,6 +39,10 @@ class GoalScore extends Component {
     }
 }
 
+/**
+ *
+ * @type {{goalScoreData: Validator<NonNullable<any[]>>, goalScorePercentage: Validator<NonNullable<number>>}}
+ */
 GoalScore.propTypes = {
     goalScoreData : PropTypes.array.isRequired,
     goalScorePercentage : PropTypes.number.isRequired,

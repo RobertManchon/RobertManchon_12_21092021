@@ -5,7 +5,14 @@ import 'containers/PerformanceAverage/PerformanceAverage.css';
 import PropTypes from 'prop-types';
 import React, { Component } from "react";
 
+/**
+ * Class PerformanceAverage
+ */
 class PerformanceAverage extends Component {
+    /**
+     *
+     * @param props
+     */
     constructor(props) {
         super(props)
 
@@ -28,6 +35,10 @@ class PerformanceAverage extends Component {
         });
     }
 
+    /**
+     *
+     * @returns {JSX.Element}
+     */
     render() {
         return (
             <article className="performanceRadarChart">
@@ -40,6 +51,10 @@ class PerformanceAverage extends Component {
     }
 }
 
+/**
+ *
+ * @type {{id: Validator<NonNullable<string>>}}
+ */
 PerformanceAverage.propTypes = {
     id : PropTypes.string.isRequired,
 }

@@ -5,13 +5,20 @@ import Loader from 'components/Loader/Loader';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
+/**
+ * Class DailyActivity
+ */
 class DailyActivity extends Component {
+    /**
+     *
+     * @param props
+     */
     constructor(props) {
         super(props)
 
         this.state = {
             dailyActivityData : [],
-            mininumYaxisKg : 0,
+            minimumYaxisKg : 0,
             maximumYaxisKg : 0,
             minimumYaxisKcal : 0,
             maximumYaxisKcal : 0,
@@ -26,7 +33,7 @@ class DailyActivity extends Component {
         .then((response) => {
             this.setState({
                 dailyActivityData: response.data,
-                mininumYaxisKg : response.mininumYaxisKg,
+                minimumYaxisKg : response.minimumYaxisKg,
                 maximumYaxisKg : response.maximumYaxisKg,
                 minimumYaxisKcal : response.minimumYaxisKcal,
                 maximumYaxisKcal : response.maximumYaxisKcal,
@@ -47,7 +54,7 @@ class DailyActivity extends Component {
                 {this.getHeaderBarChart()}
                 <ChartBar 
                 dailyActivityData = {this.state.dailyActivityData}
-                mininumYaxisKg = {this.state.mininumYaxisKg}
+                minimumYaxisKg = {this.state.minimumYaxisKg}
                 maximumYaxisKg = {this.state.maximumYaxisKg}
                 minimumYaxisKcal = {this.state.minimumYaxisKcal}
                 maximumYaxisKcal = {this.state.maximumYaxisKcal}
@@ -56,7 +63,10 @@ class DailyActivity extends Component {
         )
     }
 
-    // Build Header Bar Chart
+    /**
+     * Build Header Bar Chart
+     * @returns {JSX.Element}
+     */
     getHeaderBarChart = () => {
         return (
             <header className="barChartHeader">
@@ -76,6 +86,10 @@ class DailyActivity extends Component {
     }
 }
 
+/**
+ *
+ * @type {{id: Validator<NonNullable<string>>}}
+ */
 DailyActivity.propTypes = {
     id : PropTypes.string.isRequired,
 }

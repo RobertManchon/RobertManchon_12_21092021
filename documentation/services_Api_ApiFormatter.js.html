@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/Api/ApiFormatter.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/Api/ApiFormatter.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *  Class ApiFormatter
+ */
+class ApiFormatter {
+    /**
+     * Retrieve dataAPI USER_MAIN_DATA and return the data formatted, ready to be used for the component
+     * @param {Object} dataApi - Data from the API SportSee
+     * @return {Object} - Formatted data for the component
+     */
+    static getMainDataFormat(dataApi) {
+        let fetchedData = dataApi.data.data;
+
+        return {
+            firstName: fetchedData.userInfos.firstName,
+            macroTracker: fetchedData.keyData,
+            userScore: fetchedData.todayScore || fetchedData.score,
+        }
+    }
+
+    /**
+     * Build an array with the dates of the 7 previous days.
+     * @return {Object} - Formatted default data for the component
+     */
+    static getDailyActivityDataFormatDefault() {
+        const data = [];
+        let date = new Date(Date.now());
+    
+        // eslint-disable-next-line no-unused-vars
+        for (let _ of "1234567") {
+            let dateFr = new Intl.DateTimeFormat("fr").format(date);
+            data.push({
+                day: dateFr.slice(0, 5),
+                kilogram: 0,
+                calories: 0,
+            });
+            date.setDate(date.getDate() - 1);
+        }
+        data.reverse();
+
+        return {
+            data: data,
+            minimumYaxisKg : Math.min(...data.map((elt) => elt.kilogram)) - 1,
+            maximumYaxisKg : Math.max(...data.map((elt) => elt.kilogram)) + 2,
+            minimumYaxisKcal : Math.min(...data.map((elt) => elt.calories)) - 50,
+            maximumYaxisKcal : Math.max(...data.map((elt) => elt.calories)) + 50,
+        }
+    }
+
+    /**
+     * Retrieve dataAPI USER_ACTIVITY and return the data formatted, ready to be used for the component
+     * @param {Object} dataApi - Data from the API SportSee
+     * @return {Object} - Formatted data for the component
+     */
+    static getDailyActivityDataFormat(dataApi) {
+        if (dataApi) {
+            let fetchedData = dataApi.data.data;
+            const data = [];
+    
+            for (let item of fetchedData.sessions) {
+                // eslint-disable-next-line no-unused-vars
+                const [yyyy, mm, dd] = item.day.split("-");
+                
+                data.push({
+                    day: `${dd}/${mm}`,
+                    kilogram: item.kilogram,
+                    calories: item.calories,
+                    });
+                }
+
+                return {
+                    data: data,
+                    minimumYaxisKg : Math.min(...data.map((elt) => elt.kilogram)) - 1,
+                    maximumYaxisKg : Math.max(...data.map((elt) => elt.kilogram)) + 2,
+                    minimumYaxisKcal : Math.min(...data.map((elt) => elt.calories)) - 50,
+                    maximumYaxisKcal : Math.max(...data.map((elt) => elt.calories)) + 50,
+                }
+            }
+        this.getDailyActivityDataFormatDefault();
+    }
+
+    /**
+     * Retrieve dataAPI USER_AVERAGE_SESSIONS and return the data formatted, ready to be used for the component
+     * @param {Object} dataApi - Data from the API SportSee
+     * @return {Object} - Formatted data for the component
+     */
+    static getUserAverageDataFormat(dataApi) {
+        let fetchedData = dataApi.data.data;
+        const sessionsData = [];
+        const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+
+        fetchedData.sessions.map((session) => {
+            return sessionsData.push({
+                day: days[session.day - 1],
+                sessionLength: session.sessionLength,
+            })
+        })
+
+        return sessionsData;
+    }
+
+    /**
+     * Retrieve dataAPI USER_PERFORMANCE and return the data formatted, ready to be used for the component
+     * @param {Object} dataApi - Data from the API SportSee
+     * @return {Object} - Formatted data for the component
+     */
+    static getPerformanceAverageDataFormat(dataApi) {
+        let fetchedData = dataApi.data.data.data;
+        let performanceAverageData = [];
+
+        fetchedData.map((data, index) => {
+            return performanceAverageData.push({
+                subject:
+                dataApi.data.data.kind[index + 1].charAt(0).toUpperCase() +
+                dataApi.data.data.kind[index + 1].slice(1),
+                value: data.value,
+            })
+        })
+        return performanceAverageData;
+    }
+}
+
+export default ApiFormatter;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiFormatter.html">ApiFormatter</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="ChartBar.html">ChartBar</a></li><li><a href="ChartRadar.html">ChartRadar</a></li><li><a href="Charts.html">Charts</a></li><li><a href="DailyActivity.html">DailyActivity</a></li><li><a href="DashBoard.html">DashBoard</a></li><li><a href="Error404.html">Error404</a></li><li><a href="ErrorModal.html">ErrorModal</a></li><li><a href="GoalScore.html">GoalScore</a></li><li><a href="Header.html">Header</a></li><li><a href="IconSideNavBar.html">IconSideNavBar</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MacroTracker.html">MacroTracker</a></li><li><a href="MainNavBar.html">MainNavBar</a></li><li><a href="PerformanceAverage.html">PerformanceAverage</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SideBarNav.html">SideBarNav</a></li><li><a href="Welcome.html">Welcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 01 2021 18:04:52 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

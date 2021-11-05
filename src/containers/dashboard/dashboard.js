@@ -5,11 +5,19 @@ import PropTypes from 'prop-types';
 import React, {Component, Fragment} from 'react';
 import SideBar from 'components/SideBar/SideBar';
 
+/**
+ * Class Dashboard
+ */
 class DashBoard extends Component {
     state = {
         id : this.props.id,
     }
-    render() {   
+
+    /**
+     *
+     * @returns {JSX.Element}
+     */
+    render() {
         return (
             <Fragment>
                 <Header />
@@ -22,6 +30,10 @@ class DashBoard extends Component {
     }
 }
 
+/**
+ *
+ * @type {{id: Validator<NonNullable<string>>}}
+ */
 DashBoard.propTypes = {
     id : PropTypes.string.isRequired,
 }
