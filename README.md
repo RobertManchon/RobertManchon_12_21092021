@@ -44,14 +44,14 @@ for the official micro API of this project.
 - Install with command `npm i`
 - Run the project with command `npm start`
 
-The project will run in `http://localhost:3000` (reserve port 3001 for micro API)
-For MOCK data reserve port: 3003 with an additional API server for json files.
+The project will run in `http://localhost:3001` (reserve port 3000 for micro API)
 
 ## Existing path
 
 - For the time being, only two users available, with URL for each:
 	- `http://localhost:3001/user/12`
 	- `http://localhost:3001/user/18`
+
 - SportSee API only contains data for users with id '12' and '18'.
 
 

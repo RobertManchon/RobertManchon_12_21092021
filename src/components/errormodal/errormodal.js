@@ -9,20 +9,20 @@ import Loader from 'components/Loader/Loader'
  */
 class ErrorModal extends Component {
   /**
-     *
-     * @returns {JSX.Element}
-     */
+   *
+   * @returns {JSX.Element}
+   */
   render () {
     return (
-      <section className='errorModalBackground'>
-        <div className='errorModalContent'>
-          <div className='errorModalBody'>
-            <h3>Petit problème... Une erreur s'est produite.</h3>
-            <p>{this.props.message}</p>
-            <Loader />
+        <section className='errorModalBackground'>
+          <div className='errorModalContent'>
+            <div className='errorModalBody'>
+              <h3>Petit problème... Une erreur s'est produite.</h3>
+              <p>{this.props.message}</p>
+              <Loader />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
     )
   }
 }

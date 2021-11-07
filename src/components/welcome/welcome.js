@@ -6,18 +6,18 @@ import 'components/Welcome/Welcome.css'
  * Class Welcome
  */
 class Welcome extends Component {
-  /**
+    /**
      *
      * @returns {JSX.Element}
      */
-  render () {
-    return (
-      <section className='welcome'>
-        <h1>Bonjour <span className='welcomeTxtColored'>{this.props.welcomeData}</span></h1>
-        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </section>
-    )
-  }
+    render () {
+        return (
+            <section className='welcome'>
+                <h1>Bonjour <span className='welcomeTxtColored'>{this.props.welcomeData}</span></h1>
+                <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            </section>
+        )
+    }
 }
 
 /**
@@ -25,7 +25,7 @@ class Welcome extends Component {
  * @type {{welcomeData: Requireable<string>}}
  */
 Welcome.propTypes = {
-  welcomeData: PropTypes.string
+    welcomeData: PropTypes.string
 }
 
 export default Welcome

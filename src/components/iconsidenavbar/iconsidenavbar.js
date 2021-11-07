@@ -6,15 +6,15 @@ import PropTypes from 'prop-types'
  * Class IconSideNavBar
  */
 class IconSideNavBar extends Component {
-  render () {
-    return (
-      <>
-        <Link to='/'>
-          <img src={this.props.logo} alt='iconSideNavBar' className='iconSideNavBar' />
-        </Link>
-      </>
-    )
-  }
+    render () {
+        return (
+            <>
+                <Link to='/'>
+                    <img src={this.props.logo} alt='iconSideNavBar' className='iconSideNavBar' />
+                </Link>
+            </>
+        )
+    }
 }
 
 /**
@@ -22,7 +22,7 @@ class IconSideNavBar extends Component {
  * @type {{logo: Validator<NonNullable<string>>}}
  */
 IconSideNavBar.propTypes = {
-  logo: PropTypes.string.isRequired
+    logo: PropTypes.string.isRequired
 }
 
 export default IconSideNavBar

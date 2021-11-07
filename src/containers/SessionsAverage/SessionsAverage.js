@@ -23,16 +23,15 @@ class SessionsAverage extends Component {
         }
         this.apiProvider = new ApiProvider();
     }
-
     componentDidMount = () => {
         this.apiProvider
-        .getUserAverageSessionData(this.state.id)
-        .then((response) => {
-            this.setState({
-                loading: false,
-                userAverageData: response,
+            .getUserAverageSessionData(this.state.id)
+            .then((response) => {
+                this.setState({
+                    loading: false,
+                    userAverageData: response,
+                });
             });
-        });
     }
 
     /**
@@ -40,18 +39,18 @@ class SessionsAverage extends Component {
      * @returns {JSX.Element}
      */
     render() {
-        return this.state.loading ? 
-        (
-            <article className="sessionsLineChart">
-                <Loader />
-            </article>
-        )
-        : (
-            <article className="sessionsLineChart">
-                {this.getHeaderLineChart()}
-                <ChartLine userAverageData = {this.state.userAverageData} />
-            </article>
-        )
+        return this.state.loading ?
+            (
+                <article className="sessionsLineChart">
+                    <Loader />
+                </article>
+            )
+            : (
+                <article className="sessionsLineChart">
+                    {this.getHeaderLineChart()}
+                    <ChartLine userAverageData = {this.state.userAverageData} />
+                </article>
+            )
     }
 
     /**
@@ -63,7 +62,7 @@ class SessionsAverage extends Component {
             <header>
                 <h2 className="sessionsLineChartTitle">
                     Durée moyenne des
-                        <br />
+                    <br />
                     sessions
                 </h2>
             </header>

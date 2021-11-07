@@ -13,27 +13,27 @@ import yoga from 'assets/sideNavBar/yoga.png'
  * */
 class SideBarNav extends Component {
   /**
-     *
-     * @returns {JSX.Element}
-     */
+   *
+   * @returns {JSX.Element}
+   */
   render () {
     return (
-      <nav className='sideBarNav'>
-        <ul className='sideBarUl'>
-          <li className='borderLogoSideBar'>
-            <IconSideNavBar logo={yoga} />
-          </li>
-          <li className='borderLogoSideBar'>
-            <IconSideNavBar logo={swim} />
-          </li>
-          <li className='borderLogoSideBar'>
-            <IconSideNavBar logo={bike} />
-          </li>
-          <li className='borderLogoSideBar'>
-            <IconSideNavBar logo={weight} />
-          </li>
-        </ul>
-      </nav>
+        <nav className='sideBarNav'>
+          <ul className='sideBarUl'>
+            <li className='borderLogoSideBar'>
+              <IconSideNavBar logo={yoga} />
+            </li>
+            <li className='borderLogoSideBar'>
+              <IconSideNavBar logo={swim} />
+            </li>
+            <li className='borderLogoSideBar'>
+              <IconSideNavBar logo={bike} />
+            </li>
+            <li className='borderLogoSideBar'>
+              <IconSideNavBar logo={weight} />
+            </li>
+          </ul>
+        </nav>
     )
   }
 }

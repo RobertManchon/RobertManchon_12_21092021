@@ -29,38 +29,38 @@ class DailyActivity extends Component {
 
     componentDidMount = () => {
         this.apiProvider
-        .getUserDailyActivityData(this.props.id)
-        .then((response) => {
-            this.setState({
-                dailyActivityData: response.data,
-                minimumYaxisKg : response.minimumYaxisKg,
-                maximumYaxisKg : response.maximumYaxisKg,
-                minimumYaxisKcal : response.minimumYaxisKcal,
-                maximumYaxisKcal : response.maximumYaxisKcal,
-                loading: false,
+            .getUserDailyActivityData(this.props.id)
+            .then((response) => {
+                this.setState({
+                    dailyActivityData: response.data,
+                    minimumYaxisKg : response.minimumYaxisKg,
+                    maximumYaxisKg : response.maximumYaxisKg,
+                    minimumYaxisKcal : response.minimumYaxisKcal,
+                    maximumYaxisKcal : response.maximumYaxisKcal,
+                    loading: false,
+                });
             });
-        });
     }
 
     render() {
-        return this.state.loading ? 
-        (
-            <section className="barChart">
-                <Loader />
-            </section>
-        )
-        : (
-            <section className="barChart">
-                {this.getHeaderBarChart()}
-                <ChartBar 
-                dailyActivityData = {this.state.dailyActivityData}
-                minimumYaxisKg = {this.state.minimumYaxisKg}
-                maximumYaxisKg = {this.state.maximumYaxisKg}
-                minimumYaxisKcal = {this.state.minimumYaxisKcal}
-                maximumYaxisKcal = {this.state.maximumYaxisKcal}
-                />
-            </section>
-        )
+        return this.state.loading ?
+            (
+                <section className="barChart">
+                    <Loader />
+                </section>
+            )
+            : (
+                <section className="barChart">
+                    {this.getHeaderBarChart()}
+                    <ChartBar
+                        dailyActivityData = {this.state.dailyActivityData}
+                        minimumYaxisKg = {this.state.minimumYaxisKg}
+                        maximumYaxisKg = {this.state.maximumYaxisKg}
+                        minimumYaxisKcal = {this.state.minimumYaxisKcal}
+                        maximumYaxisKcal = {this.state.maximumYaxisKcal}
+                    />
+                </section>
+            )
     }
 
     /**

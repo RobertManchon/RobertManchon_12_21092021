@@ -8,20 +8,20 @@ import React, { Component } from 'react'
  */
 
 class Header extends Component {
-  /**
+    /**
      *
      * @returns {JSX.Element}
      */
-  render () {
-    return (
-      <header className='header'>
-        <Link to='/'>
-          <img src={logo} alt='logoHeader' className='logoHeader' />
-        </Link>
-        <MainNavBar />
-      </header>
-    )
-  }
+    render () {
+        return (
+            <header className='header'>
+                <Link to='/'>
+                    <img src={logo} alt='logoHeader' className='logoHeader' />
+                </Link>
+                <MainNavBar />
+            </header>
+        )
+    }
 }
 
 export default Header

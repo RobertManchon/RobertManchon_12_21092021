@@ -3,7 +3,13 @@ import React, { Component } from 'react'
 
 import './CustomTooltipSessionsAverage.css'
 
+/**
+ *  Class CustomTooltipSessionsAverage
+ */
 class CustomTooltipSessionsAverage extends Component {
+  /**
+   * @returns {JSX.Element|null}
+   */
   render () {
     const { payload, active } = this.props
 
@@ -13,7 +19,6 @@ class CustomTooltipSessionsAverage extends Component {
     return null
   }
 }
-
 /**
  *
  * @type {{payload: Requireable<any[]>, active: Requireable<boolean>}}
@@ -22,5 +27,4 @@ CustomTooltipSessionsAverage.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.array
 }
-
 export default CustomTooltipSessionsAverage

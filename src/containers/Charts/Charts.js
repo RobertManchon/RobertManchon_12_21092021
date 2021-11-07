@@ -32,28 +32,27 @@ class Charts extends Component {
         }
         this.apiProvider = new ApiProvider();
     }
-
     componentDidMount = () => {
         this.apiProvider
-        .getMainData(this.state.id)
-        .then((response) => {
-            this.setState({
-                welcomeData: response.firstName,
-                goalScoreData: [
-                    { name: "completed", value: response.userScore, fillColor: "#e60000" },
-                    { name: "not-completed", value: 1 - response.userScore, fillColor: "transparent" },
-                ],
-                goalScorePercentage : response.userScore * 100,
-                macroTrackerData: response.macroTracker,
-                errorModal: false,
-            });
-        })
-        .catch((error) => {
-            this.setState({
-                errorModal : true,
-                message : error.message,
+            .getMainData(this.state.id)
+            .then((response) => {
+                this.setState({
+                    welcomeData: response.firstName,
+                    goalScoreData: [
+                        { name: "completed", value: response.userScore, fillColor: "#e60000" },
+                        { name: "not-completed", value: 1 - response.userScore, fillColor: "transparent" },
+                    ],
+                    goalScorePercentage : response.userScore * 100,
+                    macroTrackerData: response.macroTracker,
+                    errorModal: false,
+                });
             })
-        })
+            .catch((error) => {
+                this.setState({
+                    errorModal : true,
+                    message : error.message,
+                })
+            })
     }
 
     /**
@@ -61,18 +60,18 @@ class Charts extends Component {
      * @returns {JSX.Element}
      */
     render () {
-        return this.state.errorModal ? 
-        (
-            <ErrorModal message={this.state.message} />
-        )
-        : (
-            <section className="charts">
-                <Welcome welcomeData={this.state.welcomeData} />
-                <DailyActivity id={this.state.id} />
-                {this.getHorizontalSectionCharts()}
-                {this.getMacroTrackerSideSection()}
-            </section>
-        )
+        return this.state.errorModal ?
+            (
+                <ErrorModal message={this.state.message} />
+            )
+            : (
+                <section className="charts">
+                    <Welcome welcomeData={this.state.welcomeData} />
+                    <DailyActivity id={this.state.id} />
+                    {this.getHorizontalSectionCharts()}
+                    {this.getMacroTrackerSideSection()}
+                </section>
+            )
     }
 
 
@@ -85,9 +84,9 @@ class Charts extends Component {
             <section className="chartsHorizontal">
                 <SessionsAverage id={this.state.id} />
                 <PerformanceAverage id={this.state.id} />
-                <GoalScore 
-                    goalScoreData={this.state.goalScoreData} 
-                    goalScorePercentage={this.state.goalScorePercentage} 
+                <GoalScore
+                    goalScoreData={this.state.goalScoreData}
+                    goalScorePercentage={this.state.goalScorePercentage}
                 />
             </section>
         )
@@ -102,31 +101,31 @@ class Charts extends Component {
         return (
             <section className="chartsVertical">
                 {/* CALORIES */}
-                <MacroTracker 
+                <MacroTracker
                     data={this.state.macroTrackerData.calorieCount / 1000}
-                    icon={calories} 
-                    unitOfMeasure="kCal" 
+                    icon={calories}
+                    unitOfMeasure="kCal"
                     name="Calories"
                 />
                 {/* PROTEIN */}
-                <MacroTracker 
+                <MacroTracker
                     data={this.state.macroTrackerData.proteinCount}
-                    icon={protein} 
-                    unitOfMeasure="g" 
+                    icon={protein}
+                    unitOfMeasure="g"
                     name="Protéines"
-                /> 
+                />
                 {/* CARBOHYDRATES */}
-                <MacroTracker 
+                <MacroTracker
                     data={this.state.macroTrackerData.carbohydrateCount}
-                    icon={carbohydrates} 
-                    unitOfMeasure="g" 
+                    icon={carbohydrates}
+                    unitOfMeasure="g"
                     name="Glucides"
                 />
                 {/* LIPIDS */}
-                <MacroTracker 
+                <MacroTracker
                     data={this.state.macroTrackerData.lipidCount}
-                    icon={lipids} 
-                    unitOfMeasure="g" 
+                    icon={lipids}
+                    unitOfMeasure="g"
                     name="Lipides"
                 />
             </section>

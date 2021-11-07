@@ -21,7 +21,6 @@ class GoalScore extends Component {
         )
     }
 
-
     /**
      * Build Pie Chart Infos
      * @returns {JSX.Element}

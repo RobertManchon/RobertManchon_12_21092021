@@ -33,76 +33,80 @@ import axios from 'axios'
  *  Class API Provider
  */
 class ApiProvider {
-    constructor() {
-        this.baseUrl = 'http://localhost:3000'
-        //this.baseUrl = './user/12.json'
-    }
+  constructor () {
+    this.baseUrl = 'http://localhost:3000'
 
-    /**
-     * Fetch USER_MAIN_DATA from API
-     * @param {string} id - user id
-     * @return {Array.Object}
-     */
-    async getMainData(id) {
-        let data = {};
-        let url = `${this.baseUrl}/user/${id}`;
+  }
 
-        await axios.get(url)
-            .then(function (response) {
-                data = ApiFormatter.getMainDataFormat(response);
-            })
-        return data;
-    }
+  /**
+   * Fetch USER_MAIN_DATA from API
+   * @param {string} id - user id
+   * @return {Array.Object}
+   */
+  async getMainData (id) {
+    let data = {}
+    const url = `${this.baseUrl}/user/${id}`
 
-    /**
-     * Fetch USER_ACTIVITY from API
-     * @param {string} id - user id
-     * @return {Array.Object}
-     */
-    async getUserDailyActivityData(id) {
-        let data = {};
-        let url = `${this.baseUrl}/user/${id}/activity`
+    await axios.get(url)
+        .then(function (response) {
+          //console.log("Réponse brute Requête get user-id:",JSON.parse(JSON.stringify(response)))
+          console.log("Réponse brute Requête get user-id:",response)
+          data = ApiFormatter.getMainDataFormat(response)
+        })
+    //console.log("Réponse formatée Requête get user-id:",JSON.parse(JSON.stringify(data)))
+    console.log("Réponse formatée Requête get user-id:",data)
+    return data
+  }
 
-        await axios.get(url)
-            .then(function (response) {
-                data = ApiFormatter.getDailyActivityDataFormat(response);
-            })
-        return data
-    }
+  /**
+   * Fetch USER_ACTIVITY from API
+   * @param {string} id - user id
+   * @return {Array.Object}
+   */
+  async getUserDailyActivityData (id) {
+    let data = {}
+    const url = `${this.baseUrl}/user/${id}/activity`
 
-    /**
-     * Fetch USER_AVERAGE_SESSIONS from API
-     * @param {string} id - user id
-     * @return {Array.Object}
-     */
-    async getUserAverageSessionData(id) {
-        let data = {};
-        let url = `${this.baseUrl}/user/${id}/average-sessions`
+    await axios.get(url)
+        .then(function (response) {
+          data = ApiFormatter.getDailyActivityDataFormat(response)
+        })
+    return data
+  }
 
-        await axios
-            .get(url)
-            .then(function (response) {
-                data = ApiFormatter.getUserAverageDataFormat(response);
-            })
-        return data
-    }
+  /**
+   * Fetch USER_AVERAGE_SESSIONS from API
+   * @param {string} id - user id
+   * @return {Array.Object}
+   */
+  async getUserAverageSessionData (id) {
+    let data = {}
+    const url = `${this.baseUrl}/user/${id}/average-sessions`
 
-    /**
-     * Fetch USER_PERFORMANCE from API
-     * @param {string} id - user id
-     * @return {Array.Object}
-     */
-    async getUserPerformanceData(id) {
-        let data = {};
-        let url = `${this.baseUrl}/user/${id}/performance`;
+    await axios
+        .get(url)
+        .then(function (response) {
+          data = ApiFormatter.getUserAverageDataFormat(response)
+        })
+    return data
+  }
 
-        await axios
-            .get(url)
-            .then(function (response) {
-                data = ApiFormatter.getPerformanceAverageDataFormat(response);
-            })
-        return data;
-    }
+  /**
+   * Fetch USER_PERFORMANCE from API
+   * @param {string} id - user id
+   * @return {Array.Object}
+   */
+  async getUserPerformanceData (id) {
+    let data = {}
+    const url = `${this.baseUrl}/user/${id}/performance`
+
+    await axios
+        .get(url)
+        .then(function (response) {
+          data = ApiFormatter.getPerformanceAverageDataFormat(response)
+        })
+    return data
+  }
 }
 
 export default ApiProvider
@@ -116,13 +120,13 @@ export default ApiProvider
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiFormatter.html">ApiFormatter</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="ChartBar.html">ChartBar</a></li><li><a href="ChartRadar.html">ChartRadar</a></li><li><a href="Charts.html">Charts</a></li><li><a href="DailyActivity.html">DailyActivity</a></li><li><a href="DashBoard.html">DashBoard</a></li><li><a href="Error404.html">Error404</a></li><li><a href="ErrorModal.html">ErrorModal</a></li><li><a href="GoalScore.html">GoalScore</a></li><li><a href="Header.html">Header</a></li><li><a href="IconSideNavBar.html">IconSideNavBar</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MacroTracker.html">MacroTracker</a></li><li><a href="MainNavBar.html">MainNavBar</a></li><li><a href="PerformanceAverage.html">PerformanceAverage</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SideBarNav.html">SideBarNav</a></li><li><a href="Welcome.html">Welcome</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiFormatter.html">ApiFormatter</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="ChartBar.html">ChartBar</a></li><li><a href="ChartLine.html">ChartLine</a></li><li><a href="ChartPie.html">ChartPie</a></li><li><a href="ChartRadar.html">ChartRadar</a></li><li><a href="Charts.html">Charts</a></li><li><a href="CustomTooltipSessionsAverage.html">CustomTooltipSessionsAverage</a></li><li><a href="DailyActivity.html">DailyActivity</a></li><li><a href="DashBoard.html">DashBoard</a></li><li><a href="Error404.html">Error404</a></li><li><a href="ErrorModal.html">ErrorModal</a></li><li><a href="GoalScore.html">GoalScore</a></li><li><a href="Header.html">Header</a></li><li><a href="IconSideNavBar.html">IconSideNavBar</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MacroTracker.html">MacroTracker</a></li><li><a href="MainNavBar.html">MainNavBar</a></li><li><a href="PerformanceAverage.html">PerformanceAverage</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="SideBarNav.html">SideBarNav</a></li><li><a href="Welcome.html">Welcome</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 01 2021 18:04:52 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Nov 07 2021 20:38:05 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

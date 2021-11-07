@@ -8,20 +8,20 @@ import 'components/MainNavBar/MainNavBar.css'
  *  are empty for the time being
  */
 class MainNavBar extends Component {
-  /**
+    /**
      *
      * @returns {JSX.Element}
      */
-  render () {
-    return (
-      <nav className='mainNavBar'>
-        <Link to='/' className='linkHeader'>Accueil</Link>
-        <Link to='/' className='linkProfil'>Profil</Link>
-        <Link to='/' className='linkReglages'>Réglages</Link>
-        <Link to='/' className='linkCommunaute'>Communauté</Link>
-      </nav>
-    )
-  }
+    render () {
+        return (
+            <nav className='mainNavBar'>
+                <Link to='/' className='linkHeader'>Accueil</Link>
+                <Link to='/' className='linkProfil'>Profil</Link>
+                <Link to='/' className='linkReglages'>Réglages</Link>
+                <Link to='/' className='linkCommunaute'>Communauté</Link>
+            </nav>
+        )
+    }
 }
 
 export default MainNavBar

@@ -26,13 +26,13 @@ class PerformanceAverage extends Component {
 
     componentDidMount = () => {
         this.apiProvider
-        .getUserPerformanceData(this.state.id)
-        .then((response) => {
-            this.setState({
-                loading: false,
-                performanceAverageData: response,
+            .getUserPerformanceData(this.state.id)
+            .then((response) => {
+                this.setState({
+                    loading: false,
+                    performanceAverageData: response,
+                });
             });
-        });
     }
 
     /**
@@ -42,9 +42,9 @@ class PerformanceAverage extends Component {
     render() {
         return (
             <article className="performanceRadarChart">
-                {this.state.loading 
-                ? <Loader />
-                : <ChartRadar performanceAverageData={this.state.performanceAverageData} />
+                {this.state.loading
+                    ? <Loader />
+                    : <ChartRadar performanceAverageData={this.state.performanceAverageData} />
                 }
             </article>
         )
